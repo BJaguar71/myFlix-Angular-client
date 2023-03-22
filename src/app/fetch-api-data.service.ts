@@ -221,3 +221,9 @@ export class FetchApiDataService {
     return throwError("Something bad happend; please try again later.");
   }
 
+  //  none-type response extraction
+  private extractResponseData(res: any): any {
+    const body = res;
+    return body || {};
+  }
+}
