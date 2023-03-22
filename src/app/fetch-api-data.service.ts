@@ -72,3 +72,18 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // get director by name
+  getDirector(directorName: string): Observable<any> {
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .get(`${apiUrl}/directors/${directorName}`, {
+        headers: new HttpHeaders(
+          {
+            Authorization: `Bearer ${token}`
+          }
+        )
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
