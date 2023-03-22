@@ -175,3 +175,20 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // Edite user informatio
+  editUser(updatedUser: any): Observable<any> {
+
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .put(`${apiUrl}/users/${username}`, updatedUser, {
+        headers: new HttpHeaders(
+          {
+            Authorization: `Bearer ${token}`
+          }
+        )
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
