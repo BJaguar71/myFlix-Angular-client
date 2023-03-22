@@ -19,3 +19,13 @@ export class FetchApiDataService {
   constructor(private http: HttpClient) { }
 
 
+  // register a new user 
+  public userRegistration(userDetails: any): Observable<any> {
+
+    console.log(userDetails);
+
+    return this.http
+      .post(apiUrl + "users", userDetails)
+      .pipe(catchError(this.handleError));
+  }
+
