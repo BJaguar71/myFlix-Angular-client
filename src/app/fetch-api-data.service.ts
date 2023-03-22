@@ -119,3 +119,22 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // get the array of favorite movies for a user
+  // getFavoriteMovies(): Observable<any> {
+
+  //   const username = localStorage.getItem("user");
+  //   const token = localStorage.getItem("token");
+
+  //   return this.http
+  //   .get(`${apiUrl}/users/${username}`, {headers: new HttpHeaders(
+  //     {
+  //       Authorization: `Bearer ${token}`
+  //     }
+  //   )})
+  //   .pipe(
+  //     map(this.extractResponseData),
+  //     map((data) = > data.FavoriteMovies),
+  //     catchError(this.handleError)
+  //   );
+  // }
+
