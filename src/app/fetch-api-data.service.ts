@@ -157,3 +157,21 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  //  delete a movie from favorite list
+  deleteFavoriteMovies(movieId: string): Observable<any> {
+
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .delete(`${apiUrl}/users/${username}/movies/${movieId}`,
+        {
+          headers: new HttpHeaders(
+            {
+              Authorization: `Bearer ${token}`
+            }
+          )
+        })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
