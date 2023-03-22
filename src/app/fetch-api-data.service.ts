@@ -29,3 +29,13 @@ export class FetchApiDataService {
       .pipe(catchError(this.handleError));
   }
 
+  // user login
+  userLogin(userDetails: any): Observable<any> {
+
+    console.log(userDetails);
+
+    return this.http
+      .post(`${apiUrl}/users/login/`, userDetails)
+      .pipe(catchError(this.handleError));
+  }
+
