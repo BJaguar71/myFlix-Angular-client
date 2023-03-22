@@ -56,3 +56,19 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  // function to get one movie by title
+  getMovie(title: string): Observable<any> {
+    // get the token from the local storage for authorization
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .get(`${apiUrl}/movies/${title}`, {
+        headers: new HttpHeaders(
+          {
+            Authorization: `Bearer ${token}`
+          }
+        )
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
