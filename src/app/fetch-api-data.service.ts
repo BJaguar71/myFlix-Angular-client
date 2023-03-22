@@ -207,3 +207,17 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  //  error handler
+  private handleError(error: HttpErrorResponse): any {
+
+    if (error.error instanceof ErrorEvent) {
+      console.error("Some error occured: ", error.error.message);
+    } else {
+      console.error(
+        `Error status code ${error.status}, ` +
+        `Error body is: ${error.error}`);
+    }
+
+    return throwError("Something bad happend; please try again later.");
+  }
+
