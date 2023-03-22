@@ -87,3 +87,19 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  //  get a genre by name
+  getGenre(genreName: string): Observable<any> {
+
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .get(`${apiUrl}/genres/${genreName}`, {
+        headers: new HttpHeaders(
+          {
+            Authorizatoin: `Bearer ${token}`
+          }
+        )
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
