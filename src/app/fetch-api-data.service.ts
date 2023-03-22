@@ -192,3 +192,18 @@ export class FetchApiDataService {
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
+  //  delete/de-register a user by username
+  deleteUser(): Observable<any> {
+
+    const username = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+
+    return this.http
+      .delete(`${apiUrl}/users/${username}`, {headers: new HttpHeaders(
+        {
+          Authorization: `Bearer ${token}` 
+        }
+      )})
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
