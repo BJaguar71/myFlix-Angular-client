@@ -3,6 +3,7 @@ import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from "rxjs";
 import { map } from "rxjs/operators";
+// import { UrlHandlingStrategy } from '@angular/router';
 
 // Declaring the api url that will provide data for the client app
 const apiUrl = "https://movie-api.fly.dev/";
@@ -30,12 +31,10 @@ export class FetchApiDataService {
   }
 
   // user login
-  userLogin(userDetails: any): Observable<any> {
-
-    console.log(userDetails);
+  public userLogin(loginData: any): Observable<any> {
 
     return this.http
-      .post(`${apiUrl}/users/login/`, userDetails)
+      .post(apiUrl + "login", loginData)
       .pipe(catchError(this.handleError));
   }
 
@@ -104,8 +103,9 @@ export class FetchApiDataService {
   }
 
   // get a user by username
-  getUser(username: string): Observable<any> {
+  getUser(): Observable<any> {
 
+    const username = localStorage.getItem("user");
     const token = localStorage.getItem("token");
 
     return this.http
@@ -218,7 +218,7 @@ export class FetchApiDataService {
         `Error body is: ${error.error}`);
     }
 
-    return throwError("Something bad happend; please try again later.");
+    return throwError(() => new Error("Something bad happend; please try again later."));
   }
 
   //  none-type response extraction
