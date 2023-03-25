@@ -6,7 +6,6 @@
     <mat-dialog-content class="movie-dialog-content">
       <mat-card-header>
         <mat-card-title><b>{{movie.Title}}</b><br><br></mat-card-title>
-        
         <mat-card-subtitle>
           Directed by: <b>{{movie.Director.Name}}</b>
         <br>
@@ -31,7 +30,26 @@
         <button mat-button color="accent" (click)="openSummary(movie.Title, movie.Summary)">
           <b>Summary</b>
         </button>
-        <mat-icon>favorite_border</mat-icon>
+        <!-- movie is not favorited then add it -->
+        <button
+            mat-button
+            class="mat-icon-button"
+            *ngIf="!isFavorited(movie._id)"
+            (click)="addToFavorites(movie._id)"
+            color="primary"
+          >
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <!-- movie is favorited? then removie it from list -->
+        <button
+            mat-button
+            class="mat-icon-button"
+            *ngIf="isFavorited(movie._id)"
+            (click)="deleteFromFavorites(movie._id)"
+            color="primary"
+          >
+          <mat-icon>favorite</mat-icon>
+        </button>
       </mat-card-actions>
     </mat-card-footer>
   </mat-card>
