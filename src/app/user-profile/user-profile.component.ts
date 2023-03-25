@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss']
 })
+
 export class UserProfileComponent implements OnInit {
   user: any = {};
   initialInput: any = {};
@@ -24,21 +25,21 @@ export class UserProfileComponent implements OnInit {
     public dialogRef: MatDialogRef<UserProfileComponent>,
     public snackBar: MatSnackBar,
     public router: Router,
-  ){}
-  
+  ) { }
+
   ngOnInit(): void {
     this.getUserInfo();
   }
 
   getUserInfo(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
-      this.user = resp; 
-      console.log(resp);
+      this.user = resp;
+      console.log(this.user);
 
-      this.updatedUser.Username = resp.Username;
-      this.updatedUser.Password = resp.Password;
-      this.updatedUser.Email = resp.Email;
-      this.updatedUser.Birthdate = resp.Birthdate;
+      this.updatedUser.Username = this.user.Username;
+      this.updatedUser.Password = this.user.Password;
+      this.updatedUser.Email = this.user.Email;
+      this.updatedUser.Birthdate = this.user.Birthdate;
 
       console.log(this.updatedUser);
       return this.user;
@@ -52,28 +53,32 @@ export class UserProfileComponent implements OnInit {
         duration: 2000,
       });
       // check if the username in localstorage is not equal to the result username then clear local storage and redirect the user to the welcome page for new login
-      if(this.user.Username !== result.Username){
+      if (this.user.Username !== result.Username) {
         localStorage.clear();
         this.router.navigate(["welcome"]);
-        this.snackBar.open("Your information was successfully updated, please loging with your new data again to be able tto see the list of movies.", "Ok", 
-        {
-          duration: 2000,
-        }
+        this.snackBar.open("Your information was successfully updated, please loging with your new data again to be able tto see the list of movies.", "Ok",
+          {
+            duration: 2000,
+          }
         );
       }
     });
   }
 
   deleteAccount(): void {
-    this.fetchApiData.deleteUser().subscribe((result) =>{
+    if (confirm("All your data as well as the movies added to your favorite list will be lost. Please note that this action cannot be undone!")) {
+      this.router.navigate(["welcome"]).then(() => {
+        this.snackBar.open("Your account was successfully removed. Please note that this action cant be undone.", "Ok",
+          {
+            duration: 2000,
+          }
+        );
+      });
+    }
+    this.fetchApiData.deleteUser().subscribe((result) => {
       console.log(result);
       localStorage.clear();
-      this.router.navigate(["welcome"]);
-      this.snackBar.open("Your account was successfully removed. Please note that this action cant be undone.", "Ok", 
-      {
-        duration: 2000,
-      }
-      );
     })
   }
+
 }
