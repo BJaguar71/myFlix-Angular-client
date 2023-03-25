@@ -17,6 +17,7 @@ export class MovieCardComponent {
 
   // define the movie variable and the of its value; which is here an array of the type any
   movies: any[] = [];
+  favorites: any[] = [];
 
   constructor(
     public fetchApiData: FetchApiDataService,
@@ -26,6 +27,7 @@ export class MovieCardComponent {
   // call the function that fetches movies here. ngOnIniti(); is called when angular is done creating the component 
   ngOnInit(): void {
     this.getMovies();
+    this.getFavorites();
   }
 
   // a function that fetches the movies from fetchApiDataService with the help of getAllMovies();
@@ -68,5 +70,43 @@ export class MovieCardComponent {
       width: "400px",
       height: "auto"
     });
+  }
+
+  getFavorites(): void {
+    this.fetchApiData.getFavoriteMovies().subscribe((result: any) => {
+      this.favorites = result.FavoriteMovies;
+      console.log(this.favorites);
+      return this.favorites;
+    })
+  }
+
+  // define a func to check if a movie is favorited 
+  isFavorited(id: string): boolean {
+   return this.favorites.includes(id);
+  }
+
+  addToFavorites(id: string): void{
+    console.log(id);
+
+    this.fetchApiData.addFavoriteMovies(id).subscribe((result) => {
+      console.log(result);
+      this.snackBar.open("Movie was successfully added to your list", "Ok", {
+        duration: 2000,
+      });
+      this.ngOnInit();
+    });
+  }
+
+  deleteFromFavorites(id: string): void {
+    console.log(id);
+
+    this.fetchApiData.deleteFavoriteMovies(id).subscribe((result) => {
+      console.log(result);
+
+      this.snackBar.open("Movies was successfully removed from your list.", "Ok", {
+        duration: 2000,
+      });
+      this.ngOnInit();
+    })
   }
 }
