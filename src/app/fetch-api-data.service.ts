@@ -72,7 +72,7 @@ export class FetchApiDataService {
   }
 
   // get director by name
-  getDirector(directorName: string): Observable<any> {
+  getDirector(directorName: string, directorBio: string): Observable<any> {
     const token = localStorage.getItem("token");
 
     return this.http
