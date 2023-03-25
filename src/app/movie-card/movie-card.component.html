@@ -1,8 +1,38 @@
+<app-navbar></app-navbar>
 <!-- use ngFor to display al returned movies, where each movie is displayed on its own card -->
 <!-- movies referes to the var that's been defined in the componet file line 14 -->
-<mat-card *ngFor="let movie of movies; let i=index">
-  <mat-dialog-content>
-    <mat-card-title>{{movie.Title}}</mat-card-title>
-    <mat-card-subtitle><img src={{movie.Image}}/></mat-card-subtitle>
-  </mat-dialog-content>
-</mat-card>
+<div class="movie-view">
+  <mat-card *ngFor="let movie of movies; let i=index" class="movie-card">
+    <mat-dialog-content class="movie-dialog-content">
+      <mat-card-header>
+        <mat-card-title><b>{{movie.Title}}</b><br><br></mat-card-title>
+        
+        <mat-card-subtitle>
+          Directed by: <b>{{movie.Director.Name}}</b>
+        <br>
+        <br>
+        </mat-card-subtitle>
+        <mat-card-subtitle>
+          Release: <b>{{movie.Year}}</b>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <img src={{movie.Image}} alt="{{movie.Title}}" class="movie-poster"/>
+    </mat-dialog-content>
+    <mat-card-footer>
+      <mat-card-actions>
+        <button 
+          (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
+          mat-button color="accent">
+          <b>Genre</b>
+        </button>
+        <button mat-button color="accent" (click)="openDirector(movie.Director.Name, movie.Director.Bio)">
+          <b>Director</b>
+        </button>
+        <button mat-button color="accent" (click)="openSummary(movie.Title, movie.Summary)">
+          <b>Summary</b>
+        </button>
+        <mat-icon>favorite_border</mat-icon>
+      </mat-card-actions>
+    </mat-card-footer>
+  </mat-card>
+</div>
