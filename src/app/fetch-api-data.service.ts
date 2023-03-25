@@ -6,7 +6,7 @@ import { map } from "rxjs/operators";
 // import { UrlHandlingStrategy } from '@angular/router';
 
 // Declaring the api url that will provide data for the client app
-const apiUrl = "https://movie-api.fly.dev/";
+const apiUrl = "https://movie-api.fly.dev";
 
 // this decorator injects this service everywhere as a root
 @Injectable({
@@ -26,7 +26,7 @@ export class FetchApiDataService {
     console.log(userDetails);
 
     return this.http
-      .post(apiUrl + "users", userDetails)
+      .post(`${apiUrl}/users`, userDetails)
       .pipe(catchError(this.handleError));
   }
 
@@ -34,7 +34,7 @@ export class FetchApiDataService {
   public userLogin(loginData: any): Observable<any> {
 
     return this.http
-      .post(apiUrl + "login", loginData)
+      .post(apiUrl + "/login", loginData)
       .pipe(catchError(this.handleError));
   }
 
@@ -45,7 +45,7 @@ export class FetchApiDataService {
     const token = localStorage.getItem("token");
 
     return this.http
-      .get(apiUrl + "movies", {
+      .get(apiUrl + "/movies", {
         headers: new HttpHeaders(
           {
             Authorization: `Bearer ${token}`
@@ -109,10 +109,10 @@ export class FetchApiDataService {
     const token = localStorage.getItem("token");
 
     return this.http
-      .get(`${apiUrl}/users/${username}`, {
+      .get(apiUrl + `/users/${username}`, {
         headers: new HttpHeaders(
           {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           }
         )
       })
@@ -152,7 +152,7 @@ export class FetchApiDataService {
             {
               Authorization: `Bearer ${token}`
             }
-          )
+          ),
         })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
@@ -187,7 +187,7 @@ export class FetchApiDataService {
           {
             Authorization: `Bearer ${token}`
           }
-        )
+        ),
       })
       .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
