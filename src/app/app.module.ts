@@ -32,6 +32,9 @@ import { MatIconModule } from "@angular/material/icon";
 // form
 import { FormsModule } from "@angular/forms";
 
+// toggle button
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 // import app's components
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
@@ -86,6 +89,7 @@ const appRoutes: Routes = [
     // by this syntax we are telling the routing module to work with all the paths inside appRoutes
     RouterModule.forRoot(appRoutes),
     MatIconModule,
+    MatButtonToggleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
