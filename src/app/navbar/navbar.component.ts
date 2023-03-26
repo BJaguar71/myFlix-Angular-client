@@ -12,11 +12,15 @@ import { MatDialog } from "@angular/material/dialog";
 })
 
 export class NavbarComponent implements OnInit {
+
+  user: any = localStorage.getItem("user");
+  
   constructor(
     public router: Router,
     public dialog: MatDialog,
     ){}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   // navigate to different views from navbar
   toMovies(): void {
@@ -24,12 +28,12 @@ export class NavbarComponent implements OnInit {
   }
 
   toProfile(): void {
-    this.dialog.open(UserProfileComponent, {
-      width: "100%",
-      height: "100%",
-    });
+    this.router.navigate(["profile"]);
   }
 
+  toWelcome(): void {
+    this.router.navigate(["welcome"]);
+  }
   // toGenres(): void {
   //   this.router.navigate(["genres"]);
   // }
