@@ -1,11 +1,14 @@
 <div class="navbar">
-  <button mat-raised-button class="nav-movies" (click)="toMovies()">
+  <button mat-raised-button class="nav-item nav-welcome" (click)="toWelcome()">
+    Home
+  </button>
+  <button mat-raised-button class="nav-item nav-movies" (click)="toMovies()">
     Movies
   </button>
-  <button mat-raised-button class="nav-profile" (click)="toProfile()">
+  <button mat-raised-button class="nav-item nav-profile" (click)="toProfile()">
     Profile
   </button>
-  <button mat-raised-button color="warn" (click)="logout()">
+  <button class="nav-item" mat-raised-button color="warn" (click)="logout()">
     Log Out
   </button>
 </div>
