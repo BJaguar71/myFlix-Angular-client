@@ -38,7 +38,6 @@ export class UserProfileComponent implements OnInit {
       this.updatedUser.Password = this.user.Password;
       this.updatedUser.Email = this.user.Email;
       this.updatedUser.Birthdate = this.user.Birthdate;
-      this.updatedUser.FavoriteMovies = this.user.FavoriteMovies;
 
       console.log(this.updatedUser);
       return this.user;
