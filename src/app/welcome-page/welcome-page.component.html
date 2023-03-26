@@ -1,12 +1,13 @@
-<div class="main-page" style="margin-top: 100px; text-align: center;">
-  <app-navbar></app-navbar>
-  <h1>
+<app-navbar></app-navbar>
+
+<div class="main-page" style="margin-top: 150px; text-align: center;">
+  <h1 class="app-title">
     Welcome to myFlix!
   </h1>
   <button mat-raised-button (click)="openUserRegistrationDialog()" style="margin-right: 10px;" color="primary">
     Sign Up
   </button>
-  <button mat-raised-button (click)="openUserLoginDialog()" color="accent">
+  <button mat-raised-button (click)="openUserLoginDialog()" id="login-btn" color="accent">
     Login
   </button>
   <!-- <button mat-raised-button color="warn" (click)="openMoviesDialog()" style="margin-left: 10px;">All Movies</button> -->
