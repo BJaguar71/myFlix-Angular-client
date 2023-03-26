@@ -1,0 +1,27 @@
+// color palette
+/* 
+  primary-color: #111215;
+  seconady-color: #f0f2d5; 
+  third-color: #564c43; //not used
+  fourth-color: #e74637; 
+*/
+
+* {box-sizing: border-box;}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  overflow: overlay;
+  background-color: #b3b3b3;
+  width: 100%;
+  height: 100px;
+  padding-left: 5%;
+
+}
+
+.nav-item {
+  margin-right: 5px;
+  margin-top: 35px;
+  margin-left: 5px;
+}

@@ -1,3 +1,11 @@
+// color palette
+/* 
+  primary-color: #111215;
+  seconady-color: #f0f2d5; 
+  third-color: #564c43; //not used
+  fourth-color: #e74637; 
+*/
+
 .movie-view {
   display: grid;
   min-width: 800px;
@@ -12,6 +20,16 @@
   width: 90%;
   justify-self: center;
   margin: 20px;
+  background-color: #f0f2d5;
+  color: #111215;
+}
+
+.mat-subtitle {
+  color: #111215; 
+}
+
+#card-btn {
+  color: #111215;
 }
 
 .movie-poster {
@@ -20,9 +38,9 @@
   margin-top: 12px;
   padding-bottom: 12px;
 } 
-.movie-dialog-content{
-  height: 100%;
-}
+// .movie-dialog-content{
+//   height: 100%;
+// }
 
 @media (min-width: 450px) and (max-width: 768px) {
   .movie-view {
