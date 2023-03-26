@@ -55,8 +55,13 @@ const appRoutes: Routes = [
   // movies route that points to the MovieCard comp with the list of all movies in a form of a card
   // add `this.router.navigate(['movies']);` to the user login comp to make the defined routing for movies work as expected
   { path: "movies", component: MovieCardComponent },
-  { path: "genres", component: GenreComponent },
-  { path: "directors", component: DirectorComponent },
+
+  // implement later
+
+  // { path: "genres", component: GenreComponent },
+  // { path: "directors", component: DirectorComponent },
+
+  { path: "profile", component: UserProfileComponent },
   // defined a route that points to the welcome path as default when the route in empty
   { path: " ", redirectTo: "welcome", pathMatch: "prefix" },
 ];
