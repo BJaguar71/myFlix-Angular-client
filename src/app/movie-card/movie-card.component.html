@@ -1,4 +1,6 @@
 <app-navbar></app-navbar>
+<br><br><br>
+<br><br><br>
 <!-- use ngFor to display al returned movies, where each movie is displayed on its own card -->
 <!-- movies referes to the var that's been defined in the componet file line 14 -->
 <div class="movie-view">
@@ -6,30 +8,42 @@
     <mat-dialog-content class="movie-dialog-content">
       <mat-card-header>
         <mat-card-title><b>{{movie.Title}}</b><br><br></mat-card-title>
-        <mat-card-subtitle>
-          Directed by: <b>{{movie.Director.Name}}</b>
-        <br>
-        <br>
+        <mat-card-subtitle class="mat-subtitle">
+          Directed by: <i>{{movie.Director.Name}}</i>
+          <br>
+          <br>
         </mat-card-subtitle>
-        <mat-card-subtitle>
-          Release: <b>{{movie.Year}}</b>
+        <mat-card-subtitle class="mat-subtitle">
+          Release: <i>{{movie.Year}}</i>
         </mat-card-subtitle>
       </mat-card-header>
-      <img src={{movie.Image}} alt="{{movie.Title}}" class="movie-poster"/>
+      <img src={{movie.Image}} alt="{{movie.Title}}" class="movie-poster" />
     </mat-dialog-content>
     <mat-card-footer>
       <mat-card-actions>
-        <button 
-          (click)="openGenre(movie.Genre.Name, movie.Genre.Description)"
-          mat-button color="accent">
+        <button (click)="openGenre(movie.Genre.Name, movie.Genre.Description)" mat-button id="card-btn">
           <b>Genre</b>
         </button>
-        <button mat-button color="accent" (click)="openDirector(movie.Director.Name, movie.Director.Bio)">
+        <button mat-button (click)="openDirector(movie.Director.Name, movie.Director.Bio)" id="card-btn">
           <b>Director</b>
         </button>
-        <button mat-button color="accent" (click)="openSummary(movie.Title, movie.Summary)">
+        <button mat-button (click)="openSummary(movie.Title, movie.Summary)" id="card-btn">
           <b>Summary</b>
         </button>
+
+        <!-- toggle button  -->
+        <!-- <mat-button-toggle-group>
+          <mat-button-toggle class="mat-icon-button" *ngIf="!isFavorited(movie._id)"
+            (click)="addToFavorites(movie._id)">
+            <mat-icon>favorite_border</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle class="mat-icon-button" *ngIf="isFavorited(movie._id)"
+            (click)="deleteFromFavorites(movie._id)">
+            <mat-icon>favorite</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group> -->
+
+        <!-- normal button -->
         <!-- movie is not favorited then add it -->
         <button
             mat-button
