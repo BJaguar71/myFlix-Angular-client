@@ -1,0 +1,40 @@
+// color palette
+/* 
+  primary-color: #111215;
+  seconady-color: #f0f2d5; 
+  third-color: #564c43; //not used
+  fourth-color: #e74637; 
+*/
+
+
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 100px;
+  align-items: center;
+}
+
+.profile-card{
+  width: 90%;
+}
+
+.update-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+mat-form-field.form-field {
+  width: 95%;
+  justify-content: center;
+}
+
+.user-profile-actions {
+  display: inline-block;
+  align-self: center;
+}
+
+.btn {
+  margin: 8px;
+}
