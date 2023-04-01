@@ -29,6 +29,12 @@ export class UserProfileComponent implements OnInit {
     this.getUserInfo();
   }
 
+  /**
+   * Function to fetch user information with API call and the getUser method in fetchApiDataService component
+   * @returns user object with user data in JSON
+   * @function getUserInfo
+   */
+
   getUserInfo(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       this.user = resp;
@@ -43,6 +49,12 @@ export class UserProfileComponent implements OnInit {
       return this.user;
     });
   }
+
+  /**
+   * Function to update the user information such as username, password, email or birthdate through an API call and the editUser method inside the fetchApiDataService component
+   * @returns successfull message
+   * @function updateUserInfo
+   */
 
   updateUserInfo(): void {
     this.fetchApiData.editUser(this.updatedUser).subscribe((result) => {
@@ -62,6 +74,12 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+
+  /**
+   * Function to remove a user from database and also from the local storage/ deregistering a user - through API call and the deleteUser method inside fetchApiDataService component
+   * @returns successfull message
+   * @function deleteAccount
+   */
 
   deleteAccount(): void {
     if (confirm("All your data as well as the movies added to your favorite list will be lost. Please note that this action cannot be undone!")) {

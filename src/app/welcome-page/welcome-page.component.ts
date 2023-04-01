@@ -16,7 +16,11 @@ export class WelcomePageComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // the function that will open the dialog when th signup button is clicked
+  /**
+   * A function that is responsible for opening a registration form as a dialog when the user pushes "Sign Up" button 
+   * @function openUserRegistrationDialog
+   */
+
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
 
@@ -25,18 +29,15 @@ export class WelcomePageComponent implements OnInit {
     });
   }
 
-  // open login dialog
+  /**
+   * A function that is responsible for opening a login form as a dialog when the user pushes "login" button
+   * @function openUserLoginDialog
+   */
+
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: "300px"
     })
   }
-
-  // open movies dialog
-  // openMoviesDialog(): void {
-  //   this.dialog.open(MovieCardComponent, {
-  //     width: "500px"
-  //   })
-  // }
 
 }
